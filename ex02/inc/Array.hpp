@@ -1,9 +1,14 @@
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
+# include <cstdlib>
+# include <iostream>
+
 template <typename T>
 class Array
 {
 	private:
 		T*				_data;
-		unsigned int	_size;	
+		unsigned int	_size;
 
 	public:
 		Array();
@@ -15,5 +20,13 @@ class Array
 
 		~Array();
 
-		unsigned int const size();
+		unsigned int size() const;
+
+		class OutOfRangeException : public std::exception
+		{
+			public :
+				virtual const char *what() const throw();
+		};
 };
+
+#endif
